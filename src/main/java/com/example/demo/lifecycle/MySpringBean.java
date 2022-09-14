@@ -6,12 +6,14 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
+
+
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-
+@Slf4j
 public class MySpringBean implements BeanNameAware, ApplicationContextAware,
         InitializingBean, DisposableBean {
     private String message;
@@ -23,32 +25,32 @@ public class MySpringBean implements BeanNameAware, ApplicationContextAware,
     }
     @Override
     public void setBeanName(String name) {
-        System.out.println("--- setBeanName executed ---");
+        log.info("--- setBeanName executed ---");
     }
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("--- setApplicationContext executed ---");
+        log.info("--- setApplicationContext executed ---");
     }
     @PostConstruct
     public void postConstruct() {
-        System.out.println("--- @PostConstruct executed ---");
+        log.info("--- @PostConstruct executed ---");
     }
     @Override
     public void afterPropertiesSet() {
-        System.out.println("--- afterPropertiesSet executed ---");
+        log.info("--- afterPropertiesSet executed ---");
     }
     public void initMethod() {
-        System.out.println("--- custom init-method executed ---");
+        log.info("--- custom init-method executed ---");
     }
     @PreDestroy
     public void preDestroy() {
-        System.out.println("--- @PreDestroy executed ---");
+        log.info("--- @PreDestroy executed ---");
     }
     @Override
     public void destroy() throws Exception {
-        System.out.println("--- destroy executed ---");
+        log.info("--- destroy executed ---");
     }
     public void destroyMethod() {
-        System.out.println("--- custom destroy-method executed ---");
+        log.info("--- custom destroy-method executed ---");
     }
 }

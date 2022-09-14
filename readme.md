@@ -26,9 +26,8 @@ Bean will be removed or destroyed from and JVM memory.
 Spring framework provides the following four ways for controlling life cycle events of a bean:
 
 1. InitializingBean and DisposableBean callback interfaces
-    * BeanPostProcessor.postProcessBeforeInitialization  // Before Initialization
-    * BeanPostProcessor.postProcessAfterInitialization   // After Initialization
-    * DisposableBean.destroy()                           // before Bean destroys 
+    * BeanPostProcessor.afterPropertiesSet      // after Properties Set
+    * DisposableBean.destroy()                  // before Bean destroys 
 2. Aware interfaces (BeanNameAware, ApplicationContextAware) for specific behavior
 3. Custom init() and destroy() methods in bean configuration file
 ```java
@@ -48,6 +47,17 @@ Spring framework provides the following four ways for controlling life cycle eve
         System.out.println("--- @PreDestroy executed ---");
     }
 ```    
+
+## execution order of life cycle event
+
+1. --- setBeanName (BeanNameAware) executed ---
+2. --- setApplicationContext (ApplicationContextAware) executed ---
+3. --- @PostConstruct (annotation) executed ---
+4. --- afterPropertiesSet (InitializingBean) executed ---
+5. --- custom init-method (@Configuration) executed ---
+6. --- @PreDestroy (annotation) executed ---
+7. --- destroy (DisposableBean interface) executed ---
+8. --- custom destroy-method (@Configuration) executed ---
 
 
 
