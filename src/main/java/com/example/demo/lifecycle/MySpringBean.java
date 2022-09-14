@@ -42,6 +42,7 @@ public class MySpringBean implements BeanNameAware, ApplicationContextAware,
     }
     public void initMethod() {
         log.info("--- custom init-method executed ---");
+        this.message = "hello world";
     }
     @PreDestroy
     public void preDestroy() {
