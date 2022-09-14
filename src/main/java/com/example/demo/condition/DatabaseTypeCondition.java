@@ -11,7 +11,7 @@ public class DatabaseTypeCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
         Map<String, Object> attributes = metadata.getAnnotationAttributes(DatabaseType.class.getName());
         String type = (String) attributes.get("value");
-        String enabledDBType = System.getProperty("dbType","MYSQL");
+        String enabledDBType = System.getProperty("dbType","known x");
         System.out.println("choose dbType --------> " + enabledDBType);
         return (enabledDBType != null && type != null && enabledDBType.equalsIgnoreCase(type));
     }

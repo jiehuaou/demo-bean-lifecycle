@@ -26,7 +26,7 @@ public class DataTypeConfigTest {
 
     @Test
     void testData(){
-        System.setProperty("dbType", "MONGO");
+       // System.setProperty("dbType", "MONGO");
         DataDAO data = context.getBean(DataDAO.class);
         String user = data.getUser();
         System.out.println("data => " + user);

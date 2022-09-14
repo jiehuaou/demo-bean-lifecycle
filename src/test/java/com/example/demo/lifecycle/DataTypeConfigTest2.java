@@ -27,7 +27,7 @@ public class DataTypeConfigTest2 {
    
     @Test
     void testData2(){
-        System.setProperty("dbType", "MYSQL");
+        // System.setProperty("dbType", "MYSQL");
         DataDAO data = context.getBean(DataDAO.class);
         String user = data.getUser();
         System.out.println("data => " + user);
