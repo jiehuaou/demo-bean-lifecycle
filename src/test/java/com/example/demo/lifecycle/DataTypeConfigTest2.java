@@ -13,24 +13,24 @@ import com.example.demo.condition.DataDAO;
 
 @SpringBootTest
 @ContextConfiguration(classes = {DataConfig.class})
-public class DataTypeConfigTest {
+public class DataTypeConfigTest2 {
 //    @Autowired
 //    DataDAO data;
     static {
-        System.setProperty("dbType", "MONGO");
-    //    System.setProperty("dbType", "MYSQL");
+        //System.setProperty("dbType", "MONGO");
+        System.setProperty("dbType", "MYSQL");
     }
 
     @Autowired
     ApplicationContext context;
 
+   
     @Test
-    void testData(){
-        System.setProperty("dbType", "MONGO");
+    void testData2(){
+        System.setProperty("dbType", "MYSQL");
         DataDAO data = context.getBean(DataDAO.class);
         String user = data.getUser();
         System.out.println("data => " + user);
-        assertEquals("user from mongo", user);
+        assertEquals("user from mysql", user);
     }
-   
 }
